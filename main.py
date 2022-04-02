@@ -21,6 +21,7 @@ def print_matrix(x, description):  # функция вывода матрицы
             print(x[c][d], end='\t')
         print()
 
+
 try:
     n = int(input("Задайте количество строк и столбцов N в матрице:\n"))
     while n < 6:
