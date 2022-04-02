@@ -35,7 +35,7 @@ try:
     fb, fc, fd, fe = ab, ac, ad, ae
     #print(f"\nB = {ab}\nC = {ac}\nD = {ad}\nE = {ae}\n")
 
-    e_cond = len([1 for j in range(len(ae)) for i in range(len(ae)) if (ae[i][j] == 0 and i > (len(ae) // 2) and (i > j > (len(ae) - i - 1)) and j % 2 == 0)])  # подсчёт нулей в нечетных столбцах E в области 4
+    e_cond = len([1 for j in range(len(ae)) for i in range(len(ae)) if (ae[i][j] == 0 and i > (len(ae) // 2) and (i > j > (len(ae) - i - 1)) and (i + n // 2 + n % 2) % 2 == 0)])  # подсчёт нулей в нечетных столбцах E в области 4
     multiplic = 1  # переменная для произведения чисел в нечетных строках E в области 1
 
     for i in range(len(ae)):
