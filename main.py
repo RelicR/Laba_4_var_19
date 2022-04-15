@@ -4,7 +4,7 @@ D | E                   1   3                       области 1 и 2 мес
                           4                         После чего вычисляется выражение: A*F+ K* F T . Выводятся по мере формирования А, F и все матричные операции последовательно.
 """
 import random
-
+import time
 
 def submatrix(x, z):  # функция задания подматриц матрицы A
     b = [x[i][:(n // 2)] for i in range(n // 2)]
@@ -18,11 +18,12 @@ def print_matrix(x, description):  # функция вывода матрицы
     print(f"\n----{description}----")
     for c in range(n):
         for d in range(n):
-            print(x[c][d], end='\t')
+            print("%5d" %x[c][d], end=' ')
         print()
 
 
 try:
+    start = time.time()
     n = int(input("Задайте количество строк и столбцов N в матрице:\n"))
     while n < 6:
         n = int(input("Задайте количество строк и столбцов N в матрице:\n"))
@@ -70,7 +71,7 @@ try:
     B = [[0 for i in range(n)] for j in range(n)]  # результативная матрица произведения A и F
     for i in range(n):
         for j in range(n):
-            B[i][j] = A[i][j] * F[i][j]
+            B[i][j] = sum([A[i][h] * F[h][j] for h in range(n)])
     print_matrix(B, 'A * F')
 
     F_t = F  # задание матрицы для транспонирования
@@ -87,5 +88,6 @@ try:
         for j in range(n):
             C[i][j] = B[i][j] + F_t[i][j]
     print_matrix(C, 'A * F + F_t * k')
+    print(f"\nВремя выполнения {time.time() - start} секунд")
 except ValueError:
     print("Введённые данные не являются числом")
